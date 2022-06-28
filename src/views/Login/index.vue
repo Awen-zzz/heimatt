@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="登录">
+    <van-nav-bar title="登录" @click-left='$router.back()'>
       <!-- <van-icon name="cross" slot="left"/>vue2可以使用 -->
       <template #left>
         <van-icon name="cross" />
@@ -19,7 +19,7 @@
           { pattern: /^(?:(?:\+|00)86)?1\d{10}$/, message: '不符合手机格式' },
         ]"
       >
-        <i class="toutiao toutiao-shouji" slot="left-icon" />
+        <MyIcon name="shouji"></MyIcon>
       </van-field>
       <van-field
         v-model.trim="code"
@@ -41,7 +41,6 @@
           />
           <van-button
             size="small"
-            class="yzm"
             native-type="button"
             v-else
             @click="onSendSms"
@@ -64,7 +63,7 @@ export default {
   created () { },
   data () {
     return {
-      mobile: '13911111111', // 手机号
+      mobile: '18813133690', // 手机号
       code: '246810', // 短信验证码
       time: 10 * 1000,
       isCountDownShow: false
@@ -76,6 +75,7 @@ export default {
         const res = await login(values)
         console.log(res)
         this.$store.commit('setUser', res.data.data)
+        this.$router.push({ name: 'my' })
       } catch (err) {
         console.log(err)
       }
@@ -93,8 +93,8 @@ export default {
       } catch (err) {
         console.log(err)
         console.log('校验失败')
-        // this.$toast.fail('手机号格式不对')
-        this.$notify('校验失败')
+        this.$toast.fail('手机号格式不对')
+        // this.$notify('校验失败')
       }
     }
   },
