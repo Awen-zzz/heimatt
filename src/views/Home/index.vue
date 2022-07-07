@@ -25,6 +25,7 @@
       closeable
       close-icon-position="top-left"
     >
+    <!--我的频道面板-->
       <ChannelPanel
         :channel="apiMyChannels"
         :active="active"

@@ -16,5 +16,6 @@ module.exports = {
     'no-unused-vars': 'off',
     'vue/multi-word-component-names': 'off',
     'vue/no-mutating-props': 0
+    // camecase: 0
   }
 }
